@@ -14,8 +14,6 @@ app.use(cors());
 app.use(express.json());
 app.use(logger);
 
-const notes = [];
-
 app.get('/', (req, res) => {
   res.send('<h1>Hello World</h1>');
 });
@@ -49,6 +47,8 @@ app.put('/api/notes/:id', (req, res, next) => {
   };
   Note.findByIdAndUpdate(id, updateNote, { new: true }).then((result) => {
     res.json(result);
+  }).catch((e) => {
+    next(e);
   });
 });
 
