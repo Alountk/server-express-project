@@ -1,40 +1,25 @@
 const express = require('express');
 const cors = require('cors');
 const logger = require('./loggerMiddleware');
+require('./mongo');
+
+const Note = require('./model/noteSchema');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-let notes = [
-  {
-    id: 1,
-    content: 'blah blah',
-    date: '2019-05-30T18:39:34.091Z',
-    important: true,
-  },
-  {
-    id: 2,
-    content: 'blih blih',
-    date: '2019-06-20T14:40:34.091Z',
-    important: false,
-  },
-  {
-    id: 3,
-    content: 'blroh blroh',
-    date: '2020-08-20T16:40:34.091Z',
-    important: true,
-  },
-];
-
 app.use(logger);
+
+let notes = [];
 
 app.get('/', (req, res) => {
   res.send('<h1>Hello World</h1>');
 });
 
 app.get('/api/notes', (req, res) => {
-  res.json(notes);
+  Note.find({}).then((dbNotes) => {
+    res.json(dbNotes);
+  });
 });
 
 app.get('/api/notes/:id', (req, res) => {

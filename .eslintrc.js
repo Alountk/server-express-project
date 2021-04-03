@@ -17,5 +17,7 @@ module.exports = {
   },
   rules: {
     'consistent-return': RULES.WARN,
+    'no-undescore-dangle': RULES.WARN,
+    'no-param-reassign': RULES.WARN,
   },
 };
