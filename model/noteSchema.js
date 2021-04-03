@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const { Schema, model } = require('mongoose');
 
 const noteSchema = new Schema({

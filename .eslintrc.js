@@ -2,6 +2,7 @@ const RULES = {
   OFF: 'off',
   WARN: 'warn',
   ERROR: 'error',
+  ALLOW: ['warn', { allow: ['_id', '__v', 'foo_'] }],
 };
 module.exports = {
   env: {
@@ -17,7 +18,7 @@ module.exports = {
   },
   rules: {
     'consistent-return': RULES.WARN,
-    'no-undescore-dangle': RULES.WARN,
     'no-param-reassign': RULES.WARN,
+    'no-undescore-dangle': RULES.OFF,
   },
 };
