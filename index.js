@@ -27,11 +27,8 @@ app.get('/api/notes', (req, res) => {
 app.get('/api/notes/:id', (req, res, next) => {
   const { id } = req.params;
   Note.findById(id).then((note) => {
-    if (note) {
-      res.status(200).json(note).end();
-    } else {
-      res.status(404).end();
-    }
+    if (note) return res.status(200).json(note).end();
+    res.status(404).end();
   }).catch((e) => {
     next(e);
   });
