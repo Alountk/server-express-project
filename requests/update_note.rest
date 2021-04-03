@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/notes/606889385e84b13ca045b995
+Content-Type: application/json
+
+{
+  "content": "new gratix",
+  "important": false
+}
